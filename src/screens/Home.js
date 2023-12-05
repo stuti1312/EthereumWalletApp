@@ -95,7 +95,7 @@ const Home = ({navigation}) => {
             <Text style={styles.value}>{item.type}</Text>
           </View>
         </View>
-        <View style={{alignItems: 'flex-end', width: '30%'}}>
+        <View style={styles.amount}>
           <Text style={styles.coinType}>{item.amount}</Text>
           <Text style={styles.value}>{item.percentage}</Text>
         </View>
@@ -104,132 +104,93 @@ const Home = ({navigation}) => {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: colors.bgColor,
-        paddingHorizontal: 15,
-        paddingVertical: 20,
-      }}>
+    <View style={styles.main}>
       {/* header */}
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          marginBottom: 10,
-        }}>
+      <View style={styles.header}>
         <View style={styles.menuBg}>
           <Image
             source={require('../assets/icons/scan.png')}
-            style={{width: 15, height: 15}}
+            style={styles.miniCoinImg}
             tintColor={colors.peach}
           />
         </View>
-        <View
-          style={{
-            backgroundColor: colors.peach,
-            height: 70,
-            width: 70,
-            borderRadius: 50,
-            justifyContent: 'center',
-            alignSelf: 'center',
-            top: 5,
-          }}>
+        <View style={styles.user}>
           <Image
             source={require('../assets/icons/user.png')}
-            style={{width: 30, height: 30, alignSelf: 'center'}}
+            style={styles.userImage}
           />
         </View>
         <View style={styles.menuBg}>
           <Image
             source={require('../assets/icons/option.png')}
-            style={{width: 20, height: 20}}
+            style={styles.menu}
             tintColor={colors.peach}
           />
         </View>
       </View>
 
       {/* user profile */}
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginBottom: 20,
-        }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Text style={{color: colors.white, marginRight: 5, fontSize: 18}}>
-            {userData.name}
-          </Text>
+      <View style={styles.profile}>
+        <View style={styles.userName}>
+          <Text style={styles.name}>{userData.name}</Text>
           <Image
             source={require('../assets/icons/arrowDown.png')}
-            style={{width: 15, height: 15}}
+            style={styles.miniCoinImg}
             tintColor={colors.white}
           />
         </View>
-        <Text style={{color: colors.white, fontSize: 30}}>{userData.price}</Text>
+        <Text style={styles.price}>{userData.price}</Text>
       </View>
 
       {/* modules */}
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 20,
-          paddingHorizontal: 20,
-        }}>
+      <View style={styles.modules}>
         <TouchableOpacity
           onPress={() => console.log('add')}
-          style={{justifyContent: 'center', alignItems: 'center'}}>
+          style={styles.addBtn}>
           <View style={styles.featureBg}>
             <Image
               source={require('../assets/icons/add.png')}
-              style={{width: 20, height: 20}}
+              style={styles.menu}
               tintColor={colors.black}
             />
           </View>
-          <Text style={{color: colors.offWhite}}>{strings.BUY}</Text>
+          <Text style={styles.moduleBtn}>{strings.BUY}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => console.log('swap')}
-          style={{justifyContent: 'center', alignItems: 'center'}}>
+          style={styles.addBtn}>
           <View style={styles.featureBg}>
             <Image
               source={require('../assets/icons/swap.png')}
-              style={{width: 20, height: 20}}
+              style={styles.menu}
               tintColor={colors.black}
             />
           </View>
-          <Text style={{color: colors.offWhite}}>{strings.SWAP}</Text>
+          <Text style={styles.moduleBtn}>{strings.SWAP}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('send')}
-          style={{justifyContent: 'center', alignItems: 'center'}}>
+          style={styles.addBtn}>
           <View style={styles.featureBg}>
             <Image
               source={require('../assets/icons/send.png')}
-              style={{width: 20, height: 20}}
+              style={styles.menu}
               tintColor={colors.black}
             />
           </View>
-          <Text style={{color: colors.offWhite}}>{strings.SEND}</Text>
+          <Text style={styles.moduleBtn}>{strings.SEND}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => console.log('copy')}
-          style={{justifyContent: 'center', alignItems: 'center'}}>
+          style={styles.addBtn}>
           <View style={styles.featureBg}>
             <Image
               source={require('../assets/icons/copy.png')}
-              style={{width: 20, height: 20}}
+              style={styles.menu}
               tintColor={colors.black}
             />
           </View>
-          <Text style={{color: colors.offWhite}}>{strings.COPY}</Text>
+          <Text style={styles.moduleBtn}>{strings.COPY}</Text>
         </TouchableOpacity>
       </View>
 
@@ -245,51 +206,43 @@ const Home = ({navigation}) => {
             styles.tabs,
             {flexDirection: 'row', backgroundColor: 'gray'},
           ]}>
-          <Text style={{color: colors.white, marginRight: 5}}>{strings.ALL}</Text>
+          <Text style={styles.all}>{strings.ALL}</Text>
           <Image
             source={require('../assets/icons/arrowRight.png')}
-            style={{width: 15, height: 15}}
+            style={styles.arrow}
             tintColor={colors.white}
           />
         </View>
-        <Text style={{color: colors.white}}>$4.0012443</Text>
+        <Text style={styles.coinType}>$4.0012443</Text>
       </View>
 
       {/* bottom tabs */}
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: 10,
-          backgroundColor: colors.black,
-          marginTop: 120,
-        }}>
+      <View style={styles.bottomTabs}>
         <View style={styles.tabs}>
           <Image
             source={require('../assets/icons/home.png')}
-            style={{width: 20, height: 20}}
+            style={styles.menu}
             tintColor={colors.gray}
           />
         </View>
         <View style={styles.tabs}>
           <Image
             source={require('../assets/icons/search.png')}
-            style={{width: 20, height: 20}}
+            style={styles.menu}
             tintColor={colors.gray}
           />
         </View>
         <View style={styles.tabs}>
           <Image
             source={require('../assets/icons/clock.png')}
-            style={{width: 20, height: 20}}
+            style={styles.menu}
             tintColor={colors.gray}
           />
         </View>
         <View style={styles.tabs}>
           <Image
             source={require('../assets/icons/balloon.png')}
-            style={{width: 20, height: 20}}
+            style={styles.menu}
             tintColor={colors.gray}
           />
         </View>
@@ -301,20 +254,70 @@ const Home = ({navigation}) => {
 export default Home;
 
 const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+    backgroundColor: colors.bgColor,
+    paddingHorizontal: 15,
+    paddingVertical: 20,
+  },
+  amount: {alignItems: 'flex-end', width: '30%'},
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  menu: {width: 20, height: 20},
   list: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
+  },
+  profile: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  name: {color: colors.white, marginRight: 5, fontSize: 18},
+  userName: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   coinDetail: {
     flexDirection: 'row',
     alignItems: 'center',
     width: '70%',
   },
+  bottomTabs: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: colors.black,
+    marginTop: 120,
+  },
+  user: {
+    backgroundColor: colors.peach,
+    height: 70,
+    width: 70,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    top: 5,
+  },
+  userImage: {width: 30, height: 30, alignSelf: 'center'},
   miniCoinImg: {
     width: 15,
     height: 15,
   },
+  modules: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 20,
+    paddingHorizontal: 20,
+  },
+  price: {color: colors.white, fontSize: 30},
   desc: {marginLeft: 15},
   coinImg: {width: 25, height: 25},
   coinType: {color: colors.white},
@@ -365,4 +368,8 @@ const styles = StyleSheet.create({
     bottom: -5,
     zIndex: 10,
   },
+  addBtn: {justifyContent: 'center', alignItems: 'center'},
+  moduleBtn: {color: colors.offWhite},
+  all: {color: colors.white, marginRight: 5},
+  arrow: {width: 15, height: 15},
 });

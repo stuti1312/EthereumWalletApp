@@ -13,10 +13,10 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Wallet">
-        <Stack.Screen name="home" component={Home} />
-        <Stack.Screen name="transactionHistory" component={TransHistory} />
-        <Stack.Screen name="send" component={Send} />
-        <Stack.Screen name="coinDetail" component={CoinDetails} />
+        <Stack.Screen name="home" component={Home} options={{headerShown:false}}/>
+        <Stack.Screen name="transactionHistory" component={TransHistory} options={{headerShown:false}}/>
+        <Stack.Screen name="send" component={Send} options={{headerShown:false}}/>
+        <Stack.Screen name="coinDetail" component={CoinDetails} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

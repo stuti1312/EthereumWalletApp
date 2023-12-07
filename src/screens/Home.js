@@ -1,107 +1,11 @@
-import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import colors from '../constants/colors';
 import strings from '../constants/strings';
+import List from '../res/List';
 
 const Home = ({navigation}) => {
   const userData = {name: 'GK Primary', price: '$0.0056'};
-
-  const tokenData = [
-    {
-      title: 'BNB',
-      amount: '$0.036',
-      percentage: '-1.10%',
-      type: '0.000162 BNB',
-      coin: require('../assets/icons/bnb.png'),
-      miniCoin: require('../assets/icons/bnb.png'),
-      coinbgColor: colors.yellow,
-      miniCoinbgColor: colors.yellow,
-      coinTintColor: colors.white,
-    },
-    {
-      title: 'Ethereum',
-      amount: '$0.036',
-      percentage: '-1.10%',
-      type: '0.000162 ETH',
-      coin: require('../assets/icons/ethereum.png'),
-      miniCoin: require('../assets/icons/bnb.png'),
-      coinbgColor: colors.gray,
-      miniCoinbgColor: colors.yellow,
-      coinTintColor: colors.white,
-    },
-    {
-      title: 'Cardano Token',
-      amount: '$0.036',
-      percentage: '-1.10%',
-      type: '0.000162 ADA',
-      coin: require('../assets/icons/cardano.png'),
-      miniCoin: require('../assets/icons/bnb.png'),
-      coinbgColor: colors.peach,
-      miniCoinbgColor: colors.yellow,
-      coinTintColor: colors.white,
-    },
-    {
-      title: 'Frontier Token',
-      amount: '$0.036',
-      percentage: '-1.10%',
-      type: '0.000162 FRONT',
-      coin: require('../assets/icons/frontierToken.png'),
-      miniCoin: require('../assets/icons/bnb.png'),
-      coinbgColor: colors.brown,
-      miniCoinbgColor: colors.yellow,
-      coinTintColor: colors.white,
-    },
-    {
-      title: 'Matic',
-      amount: '$0.036',
-      percentage: '-1.10%',
-      type: '0.000162 MATIC',
-      coin: require('../assets/icons/maticCoin.png'),
-      miniCoin: require('../assets/icons/matic.png'),
-      coinbgColor: colors.offWhite,
-      miniCoinbgColor: 'purple',
-      coinTintColor: colors.blue,
-    },
-  ];
-
-  const renderItem = ({item}) => {
-    return (
-      <View style={styles.list}>
-        <View style={styles.coinDetail}>
-          <View
-            style={[styles.miniCoin, {backgroundColor: item.miniCoinbgColor}]}>
-            <Image
-              source={item.miniCoin}
-              style={styles.miniCoinImg}
-              tintColor={colors.white}
-            />
-          </View>
-          <View style={[styles.coin, {backgroundColor: item.coinbgColor}]}>
-            <Image
-              source={item.coin}
-              style={styles.coinImg}
-              tintColor={item.coinTintColor}
-            />
-          </View>
-          <View style={styles.desc}>
-            <Text style={styles.coinType}>{item.title}</Text>
-            <Text style={styles.value}>{item.type}</Text>
-          </View>
-        </View>
-        <View style={styles.amount}>
-          <Text style={styles.coinType}>{item.amount}</Text>
-          <Text style={styles.value}>{item.percentage}</Text>
-        </View>
-      </View>
-    );
-  };
 
   return (
     <View style={styles.main}>
@@ -196,7 +100,7 @@ const Home = ({navigation}) => {
 
       {/* token list */}
       <View>
-        <FlatList data={tokenData} renderItem={renderItem} />
+        <List />
       </View>
 
       {/* total */}
@@ -260,7 +164,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 20,
   },
-  amount: {alignItems: 'flex-end', width: '30%'},
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -282,11 +185,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  coinDetail: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '70%',
   },
   bottomTabs: {
     flexDirection: 'row',
@@ -318,10 +216,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   price: {color: colors.white, fontSize: 30},
-  desc: {marginLeft: 15},
-  coinImg: {width: 25, height: 25},
   coinType: {color: colors.white},
-  value: {color: colors.gray},
   menuBg: {
     backgroundColor: colors.brown,
     height: 35,
@@ -350,23 +245,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  coin: {
-    height: 40,
-    width: 40,
-    borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  miniCoin: {
-    height: 20,
-    width: 20,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    right: -10,
-    bottom: -5,
-    zIndex: 10,
   },
   addBtn: {justifyContent: 'center', alignItems: 'center'},
   moduleBtn: {color: colors.offWhite},
